@@ -57,7 +57,6 @@ public interface ApiService {
     Call<List<Objeto>> getProductosPorCategoria(@Path("id_categoria") String id_categoria);
 
     // Carrito
-    // Falta comprar objeto aleatorio
 
     @POST("carrito/{id_partida}/{id_objeto}")
     Call<Void> agregarObjetoACarrito(@Path("id_partida") String id_partida,
@@ -81,6 +80,10 @@ public interface ApiService {
     @POST("inventario/{id_partida}/{id_objeto}")
     Call<Void> agregarObjeto(@Path("id_partida") String id_partida,
                              @Path("id_objeto") String id_objeto);
+
+    @POST("inventario/aleatorio/{id_partida}/{id_objeto}")
+    Call<Void> comprarObjetoAleatorio(@Path("id_partida") String id_partida,
+                                      @Path("id_objeto") String id_objeto);
 
     @GET("inventario/{id_partida}")
     Call<List<Objeto>> getInventario(@Path("id_partida") String id_partida);
