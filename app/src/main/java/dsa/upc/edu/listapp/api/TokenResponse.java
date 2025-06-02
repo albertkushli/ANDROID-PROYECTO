@@ -1,4 +1,4 @@
-package dsa.upc.edu.listapp.auth;
+package dsa.upc.edu.listapp.api;
 
 public class TokenResponse {
     private String token;

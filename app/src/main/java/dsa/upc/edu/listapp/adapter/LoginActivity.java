@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import dsa.upc.edu.listapp.R;
-import dsa.upc.edu.listapp.auth.*;
+import dsa.upc.edu.listapp.api.*;
 
 import dsa.upc.edu.listapp.models.Usuario;
 import retrofit2.Call;
@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
     private Button btnLogin, btnGoToRegister;
-    private AuthService auth;
+    private ApiService api;
     private CheckBox cbRememberMe;
 
     @Override
@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         btnGoToRegister = findViewById(R.id.btnGoToRegister);
         cbRememberMe    = findViewById(R.id.cbRememberMe); // NUEVO
 
-        auth = AuthClient.getClient(LoginActivity.this).create(AuthService.class);
+        api = ApiClient.getClient(LoginActivity.this).create(ApiService.class);
 
         CheckBox checkboxMostrarPassword = findViewById(R.id.checkboxMostrarPassword);
 
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             Usuario login = new Usuario(null, user, pass);
-            auth.loginUser(login).enqueue(new Callback<TokenResponse>() {
+            api.loginUser(login).enqueue(new Callback<TokenResponse>() {
                 @Override
                 public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {

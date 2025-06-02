@@ -40,9 +40,9 @@ public class PartidasMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partidas_menu);
         FloatingActionButton fabOpenMenu = findViewById(R.id.fabOpenMenu);
-        fabOpenMenu.setOnClickListener(v -> {
-            NavigationBottomSheet.showNavigationMenu(this, null);
-        });
+//        fabOpenMenu.setOnClickListener(v -> {
+//            NavigationBottomSheet.showNavigationMenu(this, null);
+//        });
 
         progressBar = findViewById(R.id.progressBar);
 
