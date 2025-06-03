@@ -1,6 +1,5 @@
-package dsa.upc.edu.listapp.adapter;
+package dsa.upc.edu.listapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,24 +10,23 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import dsa.upc.edu.listapp.R;
-import dsa.upc.edu.listapp.store.Partida;
+import dsa.upc.edu.listapp.models.Partida;
 
 public class PartidaActivity extends AppCompatActivity {
 
-    private String idPartida;
+    private String id_partida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        idPartida = getIntent().getStringExtra("idPartida");
+        id_partida = getIntent().getStringExtra("id_partida");
         setContentView(R.layout.activity_partida);
 
         // Botón flotante para abrir menú inferior
         FloatingActionButton fabOpenMenu = findViewById(R.id.fabOpenMenu);
-        fabOpenMenu.setOnClickListener(v -> {
-            NavigationBottomSheet.showNavigationMenu(this, idPartida);
-        });
+//        fabOpenMenu.setOnClickListener(v -> {
+//            NavigationBottomSheet.showNavigationMenu(this, id_partida);
+//        });
 
         // Botones tienda e inventario
         ImageButton btnTienda = findViewById(R.id.btnTienda);
@@ -56,21 +54,21 @@ public class PartidaActivity extends AppCompatActivity {
             tvMonedas.setText("Monedas: " + partida.getMonedas());
             tvPuntuacion.setText("Puntuación: " + partida.getPuntuacion());
 
-            String idPartida = partida.getId_partida();
+            String id_partida = partida.getId_partida();
 
             // Ir a Tienda
-            btnTienda.setOnClickListener(v -> {
-                Intent intent = new Intent(PartidaActivity.this, StoreActivity.class);
-                intent.putExtra("idPartida", idPartida);
-                startActivity(intent);
-            });
+//            btnTienda.setOnClickListener(v -> {
+//                Intent intent = new Intent(PartidaActivity.this, StoreActivity.class);
+//                intent.putExtra("id_partida", id_partida);
+//                startActivity(intent);
+//            });
 
             // Ir a Inventario
-            btnInventario.setOnClickListener(v -> {
-                Intent intent = new Intent(PartidaActivity.this, InventarioActivity.class);
-                intent.putExtra("idPartida", idPartida);
-                startActivity(intent);
-            });
+//            btnInventario.setOnClickListener(v -> {
+//                Intent intent = new Intent(PartidaActivity.this, InventarioActivity.class);
+//                intent.putExtra("id_partida", id_partida);
+//                startActivity(intent);
+//            });
 
         } else {
             // Si no hay partida, mostrar mensaje y ocultar campos

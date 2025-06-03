@@ -1,4 +1,4 @@
-package dsa.upc.edu.listapp.adapter;
+package dsa.upc.edu.listapp;
 
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import dsa.upc.edu.listapp.R;
+import dsa.upc.edu.listapp.models.Partida;
 
 public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHolder> {
 

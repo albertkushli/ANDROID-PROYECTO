@@ -1,4 +1,4 @@
-package dsa.upc.edu.listapp.adapter;
+package dsa.upc.edu.listapp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import dsa.upc.edu.listapp.R;
 import dsa.upc.edu.listapp.api.ApiClient;
 import dsa.upc.edu.listapp.api.ApiService;
 import dsa.upc.edu.listapp.models.Partida;
@@ -58,7 +57,7 @@ public class PartidasMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(Partida partida) {
                 Intent intent = new Intent(PartidasMenuActivity.this, PartidaActivity.class);
-                intent.putExtra("partida", partida);
+                intent.putExtra("id_partida", partida.getId_partida());
                 startActivity(intent);
             }
 
@@ -66,9 +65,7 @@ public class PartidasMenuActivity extends AppCompatActivity {
             public void onEliminarPartida(Partida partida, int position) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PartidasMenuActivity.this);
                 builder.setTitle("Eliminar partida")
-                        .setMessage(partida.getInventario() == null || partida.getInventario().isEmpty()
-                                ? "¿Seguro que quieres eliminar esta partida vacía?"
-                                : "Esta partida tiene objetos comprados.\n¿Seguro que quieres eliminarla?")
+                        .setMessage("¿Seguro que quieres eliminar esta partida?")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("Sí, eliminar", (dialog, which) -> {
                             borrarPartida(partida.getId_partida(), position);
@@ -87,7 +84,7 @@ public class PartidasMenuActivity extends AppCompatActivity {
         cargarPartidas();
 
         btnCrearPartida.setOnClickListener(v -> {
-            api.crearPartida().enqueue(new Callback<Partida>() {
+            api.addPartidaSinDatos().enqueue(new Callback<Partida>() {
                 @Override
                 public void onResponse(Call<Partida> call, Response<Partida> response) {
                     if (response.isSuccessful() && response.body() != null) {
@@ -134,8 +131,8 @@ public class PartidasMenuActivity extends AppCompatActivity {
         });
     }
 
-    private void borrarPartida(String idPartida, int position) {
-        api.deletePartida(idPartida).enqueue(new Callback<Void>() {
+    private void borrarPartida(String id_partida, int position) {
+        api.deletePartida(id_partida).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {

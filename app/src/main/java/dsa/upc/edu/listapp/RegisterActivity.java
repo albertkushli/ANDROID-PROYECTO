@@ -1,16 +1,18 @@
-package dsa.upc.edu.listapp.adapter;
+package dsa.upc.edu.listapp;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.InputType;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import dsa.upc.edu.listapp.R;
+import java.io.IOException;
+
 import dsa.upc.edu.listapp.api.ApiClient;
 import dsa.upc.edu.listapp.api.ApiService;
 import dsa.upc.edu.listapp.models.Usuario;
@@ -70,15 +72,35 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             Usuario nuevo = new Usuario(null, user, pass);
+            Toast.makeText(this, "Registrando nuevo usuario...", Toast.LENGTH_SHORT).show();
             api.registerUser(nuevo).enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
+                    Toast.makeText(RegisterActivity.this,"Response : "+response.code(), Toast.LENGTH_SHORT).show();
                     if (response.isSuccessful()) {
-                        Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        Log.d("API", "Código HTTP: " + response.code());
+                        Log.d("API", "Respuesta: " + response.body().toString());
+                        //Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         finish();
                     } else {
-                        Toast.makeText(RegisterActivity.this, "Usuario ya existe", Toast.LENGTH_SHORT).show();
+                        try {
+                            String errorJson = response.errorBody().string();
+                            Log.e("API", "Mensaje del servidor: " + errorJson);
+                            // Extrae mensaje si es JSON
+                            String msg = errorJson;
+                            if (errorJson.contains("error")) {
+                                int start = errorJson.indexOf(":") + 2;
+                                int end = errorJson.lastIndexOf("\"");
+                                msg = errorJson.substring(start, end);
+                            }
+                            Toast.makeText(RegisterActivity.this, "Servidor dice: " + msg, Toast.LENGTH_LONG).show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Log.e("API", "Error. Código: " + response.code());
+                        Log.e("API", "Error body: " + response.errorBody().toString());
+                        //Toast.makeText(RegisterActivity.this, "Usuario ya existe", Toast.LENGTH_SHORT).show();
                     }
                 }
                 @Override

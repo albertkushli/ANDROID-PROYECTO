@@ -1,4 +1,4 @@
-package dsa.upc.edu.listapp.adapter;
+package dsa.upc.edu.listapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +9,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import dsa.upc.edu.listapp.R;
 import dsa.upc.edu.listapp.api.*;
 
 import dsa.upc.edu.listapp.models.Usuario;
@@ -74,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         Toast.makeText(LoginActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, PartidasMenuActivity.class);
-                        intent.putExtra("nombreUsu", user);
+                        intent.putExtra("nombre", user);
                         startActivity(intent);
                         finish();
                     } else {
