@@ -1,6 +1,8 @@
 package dsa.upc.edu.listapp.models;
 
-public class CategoriaObjeto {
+import java.io.Serializable;
+
+public class CategoriaObjeto implements Serializable {
 
     private String id_categoria;
 

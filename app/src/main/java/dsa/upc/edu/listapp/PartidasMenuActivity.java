@@ -39,9 +39,9 @@ public class PartidasMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partidas_menu);
         FloatingActionButton fabOpenMenu = findViewById(R.id.fabOpenMenu);
-//        fabOpenMenu.setOnClickListener(v -> {
-//            NavigationBottomSheet.showNavigationMenu(this, null);
-//        });
+        fabOpenMenu.setOnClickListener(v -> {
+            NavigationBottomSheet.showNavigationMenu(this, null);
+        });
 
         progressBar = findViewById(R.id.progressBar);
 
@@ -57,7 +57,7 @@ public class PartidasMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(Partida partida) {
                 Intent intent = new Intent(PartidasMenuActivity.this, PartidaActivity.class);
-                intent.putExtra("id_partida", partida.getId_partida());
+                intent.putExtra("partida", partida);
                 startActivity(intent);
             }
 
@@ -131,8 +131,8 @@ public class PartidasMenuActivity extends AppCompatActivity {
         });
     }
 
-    private void borrarPartida(String id_partida, int position) {
-        api.deletePartida(id_partida).enqueue(new Callback<Void>() {
+    private void borrarPartida(String idPartida, int position) {
+        api.deletePartida(idPartida).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {

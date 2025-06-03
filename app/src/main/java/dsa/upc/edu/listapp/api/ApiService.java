@@ -30,6 +30,11 @@ public interface ApiService {
     @GET("partidas")
     Call<List<Partida>> getPartidas();
 
+    @GET("partidas/{id_partida}")
+    Call<Partida> getPartida(@Path("id_partida") String id_partida);
+    // En principio no se usa porque usamos intent para pasar el objeta
+    // partida entero, en clase partida esta Serializable
+
     @GET("partidas/{id_partida}/monedas")
     Call<MonedasResponse> getMonedasDePartida(@Path("id_partida") String id_partida);
 
@@ -79,9 +84,9 @@ public interface ApiService {
 
     // Inventario
 
-    @POST("inventario/{id_partida}/{id_objeto}")
-    Call<Void> agregarObjeto(@Path("id_partida") String id_partida,
-                             @Path("id_objeto") String id_objeto);
+    @POST("inventario/aleatorio/{id_partida}/{id_objeto}")
+    Call<Void> comprarObjetoAleatorio(@Path("id_partida") String id_partida,
+                                      @Path("id_objeto") String id_objeto);
 
     @GET("inventario/{id_partida}")
     Call<List<Objeto>> getInventario(@Path("id_partida") String id_partida);

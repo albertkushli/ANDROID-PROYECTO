@@ -78,29 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     Toast.makeText(RegisterActivity.this,"Response : "+response.code(), Toast.LENGTH_SHORT).show();
                     if (response.isSuccessful()) {
-                        Log.d("API", "Código HTTP: " + response.code());
-                        Log.d("API", "Respuesta: " + response.body().toString());
-                        //Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         finish();
                     } else {
-                        try {
-                            String errorJson = response.errorBody().string();
-                            Log.e("API", "Mensaje del servidor: " + errorJson);
-                            // Extrae mensaje si es JSON
-                            String msg = errorJson;
-                            if (errorJson.contains("error")) {
-                                int start = errorJson.indexOf(":") + 2;
-                                int end = errorJson.lastIndexOf("\"");
-                                msg = errorJson.substring(start, end);
-                            }
-                            Toast.makeText(RegisterActivity.this, "Servidor dice: " + msg, Toast.LENGTH_LONG).show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        Log.e("API", "Error. Código: " + response.code());
-                        Log.e("API", "Error body: " + response.errorBody().toString());
-                        //Toast.makeText(RegisterActivity.this, "Usuario ya existe", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Usuario ya existe", Toast.LENGTH_SHORT).show();
                     }
                 }
                 @Override

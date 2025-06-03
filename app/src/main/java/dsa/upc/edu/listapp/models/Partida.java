@@ -1,6 +1,8 @@
 package dsa.upc.edu.listapp.models;
 
-public class Partida {
+import java.io.Serializable;
+
+public class Partida implements Serializable {
 
     private String id_partida;
 

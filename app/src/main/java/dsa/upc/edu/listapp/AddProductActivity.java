@@ -1,11 +1,9 @@
-//package dsa.upc.edu.listapp.adapter;
+//package dsa.upc.edu.listapp;
 //
 //import android.app.Activity;
 //import android.os.Bundle;
 //import android.widget.*;
 //
-//import dsa.upc.edu.listapp.R;
-//import dsa.upc.edu.listapp.store.*;
 //import retrofit2.*;
 //import java.util.UUID;
 //

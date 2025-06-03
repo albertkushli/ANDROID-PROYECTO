@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import java.io.IOException;
 
+import dsa.upc.edu.listapp.utils.Constants;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -13,8 +14,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
-    //private static final String BASE_URL = "https://dsa1.upc.edu/dsaApp/";
+    private static final String BASE_URL = Constants.FULL_API_URL;
 
     public static Retrofit getClient(Context context) {
         OkHttpClient client = new OkHttpClient.Builder()

@@ -1,7 +1,5 @@
 package dsa.upc.edu.listapp.models;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Objeto {
 
     private String id_objeto;
