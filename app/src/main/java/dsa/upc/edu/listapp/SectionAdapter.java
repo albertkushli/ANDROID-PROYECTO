@@ -56,5 +56,3 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.VH> {
         }
     }
 }
-
-

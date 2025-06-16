@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2C2C2C">
+
+    <!-- Panel principal con borde dorado estilo RPG -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#3E2723"
+        android:layout_margin="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Header con título -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#2E1A1A"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CONSULTAS"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="16sp"
+                android:textColor="#FFD700"
+                android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reporta un problema"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="8sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+        <!-- Contenido del formulario -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="20dp"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Campo Título -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TÍTULO"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="10sp"
+                        android:textColor="#FFD700"
+                        android:layout_marginBottom="8dp" />
+
+                    <EditText
+                        android:id="@+id/etTitulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Describe brevemente"
+                        android:textColorHint="#998866"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="9sp"
+                        android:background="#5A4A3A"
+                        android:padding="12dp"
+                        android:inputType="text"
+                        android:maxLines="1" />
+
+                </LinearLayout>
+
+                <!-- Campo Mensaje -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MENSAJE"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="10sp"
+                        android:textColor="#FFD700"
+                        android:layout_marginBottom="8dp" />
+
+                    <EditText
+                        android:id="@+id/etMensaje"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:hint="Explica tu problema"
+                        android:textColorHint="#998866"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="9sp"
+                        android:background="#5A4A3A"
+                        android:padding="12dp"
+                        android:gravity="top"
+                        android:inputType="textMultiLine" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!-- Botón Enviar -->
+        <Button
+            android:id="@+id/btnEnviarConsulta"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="ENVIAR"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:background="@drawable/pixel_button_gold"
+            android:layout_margin="20dp" />
+
+    </LinearLayout>
+
+    <!-- Botón de volver estilo RPG -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/pixel_button_gold"
+        android:src="@drawable/ic_arrow_back"
+        android:padding="12dp"
+        android:layout_margin="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Progress Bar centrado -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:progressTint="#FFD700"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

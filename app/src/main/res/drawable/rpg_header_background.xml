@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Fondo marrón más oscuro para el header -->
+    <item>
+        <shape>
+            <solid android:color="#2E1A1A"/>
+            <corners android:radius="0dp"/>
+        </shape>
+    </item>
+
+    <!-- Línea dorada inferior -->
+    <item android:top="999dp">
+        <shape>
+            <solid android:color="#FFD700"/>
+            <size android:height="2dp"/>
+        </shape>
+    </item>
+
+</layer-list>

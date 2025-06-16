@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import dsa.upc.edu.listapp.api.*;
@@ -19,7 +21,8 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
-    private Button btnLogin, btnGoToRegister;
+    private Button btnLogin;
+    private TextView btnGoToRegister;
     private ApiService api;
     private CheckBox cbRememberMe;
 
@@ -62,20 +65,26 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
-                        prefs.edit().putString("token", response.body().getToken()).apply();
+                        SharedPreferences.Editor editor = prefs.edit();
+
+                        // Guardar token
+                        editor.putString("token", response.body().getToken());
+
+                        // CAMBIO 1: Guardar el username
+                        editor.putString("username", user);
 
                         // --- AQUI GUARDAMOS EL NOMBRE DE USUARIO SI EL CHECKBOX ESTÁ MARCADO ---
                         if (cbRememberMe.isChecked()) {
-                            prefs.edit().putString("usuarioRecordado", user).apply();
+                            editor.putString("usuarioRecordado", user);
                         } else {
-                            prefs.edit().remove("usuarioRecordado").apply(); // Si no, borramos cualquier recordatorio anterior
+                            editor.remove("usuarioRecordado"); // Si no, borramos cualquier recordatorio anterior
                         }
 
-                        Toast.makeText(LoginActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, PartidasMenuActivity.class);
-                        intent.putExtra("nombre", user);
-                        startActivity(intent);
-                        finish();
+                        editor.apply();
+
+                        // CAMBIO 2: Obtener el ID del usuario antes de continuar
+                        obtenerDatosUsuario(user);
+
                     } else {
                         Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
                     }
@@ -90,6 +99,44 @@ public class LoginActivity extends AppCompatActivity {
 
         btnGoToRegister.setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        });
+    }
+
+    // CAMBIO 3: Nuevo método para obtener el ID del usuario
+    private void obtenerDatosUsuario(String username) {
+        api.getUsuarioPorNombre(username).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Usuario usuario = response.body();
+
+                    // Guardar el ID del usuario Y EL USERNAME
+                    SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
+                    prefs.edit()
+                            .putString("userId", usuario.getId_usuario())
+                            .putString("username", usuario.getNombre())  // <-- ESTA LÍNEA FALTABA
+                            .apply();
+
+                    // Ahora sí, ir a la siguiente actividad
+                    Toast.makeText(LoginActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, PartidasMenuActivity.class);
+                    intent.putExtra("nombre", username);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Error al obtener datos del usuario", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                // Aunque falle, permitir continuar pero sin ID
+                Toast.makeText(LoginActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, PartidasMenuActivity.class);
+                intent.putExtra("nombre", username);
+                startActivity(intent);
+                finish();
+            }
         });
     }
 }

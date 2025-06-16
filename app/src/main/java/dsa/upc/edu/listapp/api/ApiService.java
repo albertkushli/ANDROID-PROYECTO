@@ -16,9 +16,8 @@ public interface ApiService {
     @POST("usuarios/login")
     Call<TokenResponse> loginUser(@Body Usuario usuario);
 
-    @PUT("usuarios")
-    Call<Usuario> updateUsuario(@Body Usuario usuario);
-    //Para poder actualizar el nombre
+    @GET("usuarios/nombre/{nombre}")
+    Call<Usuario> getUsuarioPorNombre(@Path("nombre") String nombre);
 
     // Partida
 
@@ -37,7 +36,6 @@ public interface ApiService {
 
     @GET("partidas/{id_partida}/monedas")
     Call<MonedasResponse> getMonedasDePartida(@Path("id_partida") String id_partida);
-
 
     @PUT("partidas")
     Call<Partida> updatePartida(@Body Partida partida);
@@ -98,4 +96,36 @@ public interface ApiService {
     @DELETE("inventario/{id_partida}")
     Call<Void> eliminarTodosLosObjetos(@Path("id_partida") String id_partida);
 
+    // Insignias
+
+    @GET("insignia")
+    Call<List<Insignia>> getAllInsignias();
+
+    @GET("insignia/{id_insignia}")
+    Call<Insignia> getInsignia(@Path("id_insignia") String id_insignia);
+
+    // Insignias del usuario
+
+    @GET("Usuario_Insignia/{id_usuario}/insignias")
+    Call<List<Insignia>> getInsigniasDelUsuario(@Path("id_usuario") String id_usuario);
+
+    // Alternativa: si el backend usa el token para identificar al usuario
+    @GET("Usuario_Insignia")
+    Call<List<Insignia>> getMisInsignias();
+
+    // FAQs
+    @GET("faqs")
+    Call<List<Faq>> getFaqs();
+
+    // Denuncias
+    @POST("denuncias")
+    Call<Denuncia> reportDenuncia(@Body Denuncia denuncia);
+
+    @GET("denuncias")
+    Call<List<Denuncia>> getDenuncias();
+
+    @GET("denuncias/usuario")
+    Call<List<Denuncia>> getMisDenuncias();
+    @POST("consultas")
+    Call<Consulta> addConsulta(@Header("Authorization") String token, @Body Consulta consulta);
 }

@@ -2,6 +2,7 @@ package dsa.upc.edu.listapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,6 +39,7 @@ public class PartidasMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partidas_menu);
+
         FloatingActionButton fabOpenMenu = findViewById(R.id.fabOpenMenu);
         fabOpenMenu.setOnClickListener(v -> {
             NavigationBottomSheet.showNavigationMenu(this, null);
@@ -50,6 +52,20 @@ public class PartidasMenuActivity extends AppCompatActivity {
 
         btnCrearPartida = findViewById(R.id.btnCrearPartida);
         api = ApiClient.getClient(PartidasMenuActivity.this).create(ApiService.class);
+
+        // BOTÓN DE PERFIL AÑADIDO AQUÍ
+        ImageButton btnPerfil = findViewById(R.id.btnPerfil);
+        btnPerfil.setOnClickListener(v -> {
+            Intent intent = new Intent(PartidasMenuActivity.this, PerfilActivity.class);
+            startActivity(intent);
+        });
+
+        // BOTÓN DE CONSULTAS AÑADIDO AQUÍ
+        Button btnConsultas = findViewById(R.id.btnConsultas);
+        btnConsultas.setOnClickListener(v -> {
+            Intent intent = new Intent(PartidasMenuActivity.this, ConsultasActivity.class);
+            startActivity(intent);
+        });
 
         partidas = new ArrayList<>();
 
@@ -104,7 +120,6 @@ public class PartidasMenuActivity extends AppCompatActivity {
             });
         });
     }
-
 
     private void cargarPartidas() {
         progressBar.setVisibility(View.VISIBLE); // Mostrar spinner al empezar

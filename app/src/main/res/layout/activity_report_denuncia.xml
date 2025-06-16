@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF1A0F05">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/headerPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header_background"
+        android:padding="20dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REPORTAR DENUNCIA"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="14sp"
+            android:textColor="#FFD700"
+            android:gravity="center"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ayúdanos a mejorar"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="10sp"
+            android:textColor="#AAFFFFFF"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- Formulario -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/headerPanel"
+        app:layout_constraintBottom_toTopOf="@id/buttonsLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/form_background"
+            android:padding="20dp">
+
+            <!-- Campo Fecha -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FECHA"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="10sp"
+                android:textColor="#FFD700"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etFecha"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:fontFamily="@font/press_start_2p_family"
+                android:enabled="false"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Campo Título -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TITULO"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="10sp"
+                android:textColor="#FFD700"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:hint="Título de la denuncia"
+                android:textColorHint="#66FFFFFF"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:fontFamily="@font/press_start_2p_family"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Campo Mensaje -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MENSAJE"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="10sp"
+                android:textColor="#FFD700"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etMensaje"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:hint="Describe el problema"
+                android:textColorHint="#66FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:fontFamily="@font/press_start_2p_family"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Campo Remitente -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="REMITENTE"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="10sp"
+                android:textColor="#FFD700"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etRemitente"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:hint="Tu nombre"
+                android:textColorHint="#66FFFFFF"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:fontFamily="@font/press_start_2p_family" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Botones -->
+    <LinearLayout
+        android:id="@+id/buttonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="VOLVER"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:background="@drawable/pixel_button_gold"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="ENVIAR"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:background="@drawable/pixel_button_gold"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

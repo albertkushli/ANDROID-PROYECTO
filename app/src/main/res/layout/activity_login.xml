@@ -3,91 +3,156 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/fondo_inicio"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".LoginActivity">
 
-    <!-- He reemplazado CardView por un simple LinearLayout con elevación -->
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#99FFFFFF"
-        android:elevation="6dp"
-        android:padding="24dp"
+    <!-- Imagen de fondo del bosque -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/f1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Overlay oscuro para mejorar legibilidad -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Panel de login estilo RPG -->
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rpg_panel_background"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Título -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesión"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="@font/press_start_2p_family"
             android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:text="ENTRA AL MUNDO"
+            android:textColor="#FFD700"
+            android:textSize="16sp" />
+
+        <!-- Campo de usuario -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOMBRE"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="10sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
 
         <EditText
             android:id="@+id/etLoginUsername"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Nombre de usuario"
-            android:background="#99FFFFFF"
-            android:paddingHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:inputType="textPersonName" />
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/pixel_input_field"
+            android:fontFamily="@font/press_start_2p_family"
+            android:hint="Ingresa tu nombre"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAFFFFFF"
+            android:textSize="10sp" />
+
+        <!-- Campo de contraseña -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/press_start_2p_family"
+            android:text="CONTRASEÑA"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp" />
 
         <EditText
             android:id="@+id/etLoginPassword"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Contraseña"
-            android:background="#99FFFFFF"
-            android:paddingHorizontal="16dp"
-            android:layout_marginBottom="4dp"
-            android:inputType="textPassword" />
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/pixel_input_field"
+            android:fontFamily="@font/press_start_2p_family"
+            android:hint="Ingresa tu contraseña"
+            android:inputType="textPassword"
+            android:paddingHorizontal="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAFFFFFF"
+            android:textSize="10sp" />
 
-
+        <!-- Checkboxes -->
         <CheckBox
             android:id="@+id/checkboxMostrarPassword"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:minHeight="48dp"
-            android:padding="8dp"
-            android:text="Mostrar contraseña" />
+            android:buttonTint="#FFD700"
+            android:fontFamily="@font/press_start_2p_family"
+            android:text="Mostrar contraseña"
+            android:textColor="#FFFFFF"
+            android:textSize="8sp" />
 
         <CheckBox
             android:id="@+id/cbRememberMe"
             android:layout_width="wrap_content"
-            android:layout_height="33dp"
-            android:layout_marginBottom="16dp"
-            android:minHeight="48dp"
-            android:padding="8dp"
-            android:text="Recordarme" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:buttonTint="#FFD700"
+            android:fontFamily="@font/press_start_2p_family"
+            android:text="Recuerdame"
+            android:textColor="#FFFFFF"
+            android:textSize="8sp" />
+
+        <!-- Botón de login -->
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Entrar"
-            android:textAllCaps="false"
-            android:backgroundTint="#1E3A8A"
-            android:background="#99FFFFFF"
-            android:layout_marginBottom="16dp" />
-
-        <Button
+            android:layout_height="56dp"
+            android:text="EMPIEZA LA AVENTURA"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="13sp"
+            android:textColor="#000000"
+            android:background="@drawable/pixel_button_gold"
+            android:layout_marginBottom="20dp" />
+        <!-- Link de registro -->
+        <TextView
             android:id="@+id/btnGoToRegister"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="¿No tienes cuenta? Registrarse"
-            android:background="@android:color/transparent"
-            android:textColor="#1E3A8A"
-            android:textAllCaps="false"
-            android:layout_gravity="center" />
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/press_start_2p_family"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="¿NUEVO AVENTURERO? REGISTRATE"
+            android:textColor="#FFD700"
+            android:textSize="8sp" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

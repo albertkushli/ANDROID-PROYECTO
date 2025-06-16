@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Sombra -->
+    <item android:top="3dp" android:left="3dp">
+        <shape>
+            <solid android:color="#44000000" />
+        </shape>
+    </item>
+
+    <!-- Botón principal -->
+    <item android:bottom="3dp" android:right="3dp">
+        <shape>
+            <solid android:color="#FFD700" />
+            <stroke
+                android:width="2dp"
+                android:color="#FFA500" />
+        </shape>
+    </item>
+</layer-list>

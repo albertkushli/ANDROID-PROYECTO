@@ -22,6 +22,7 @@ public class RandomActivity extends AppCompatActivity {
     private TextView tvNombre, tvCategoria, tvPrecio;
     private ImageView ivIcono;
     private Button btnComprarAleatorio;
+    private Button btnVolver;
 
     private String idPartida;
     private Objeto productoMostrado; // para mostrar qué compramos
@@ -39,6 +40,13 @@ public class RandomActivity extends AppCompatActivity {
         tvPrecio = findViewById(R.id.tvPrecioProducto);
         ivIcono = findViewById(R.id.ivIconoProducto);
         btnComprarAleatorio = findViewById(R.id.btnComprarAleatorio);
+        btnVolver = findViewById(R.id.btnVolver);
+
+        // Configurar botón volver
+        btnVolver.setOnClickListener(v -> {
+            // Simplemente cierra esta actividad y vuelve a la anterior (StoreActivity)
+            finish();
+        });
 
         // Obtener id de partida
         idPartida = getIntent().getStringExtra("idPartida");
@@ -50,7 +58,6 @@ public class RandomActivity extends AppCompatActivity {
 
         // Cargar producto aleatorio
         cargarProductoAleatorio();
-
     }
 
     private void cargarProductoAleatorio() {
@@ -86,7 +93,9 @@ public class RandomActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(RandomActivity.this, "Producto comprado", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RandomActivity.this, "¡Producto comprado! Revisa tu inventario", Toast.LENGTH_LONG).show();
+                    // Opcional: cerrar la actividad después de comprar
+                    // finish();
                 } else {
                     Toast.makeText(RandomActivity.this, "No se pudo realizar la compra", Toast.LENGTH_SHORT).show();
                 }

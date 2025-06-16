@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Sombra -->
+    <item android:top="4dp" android:left="4dp">
+        <shape>
+            <solid android:color="#66000000" />
+            <corners android:radius="0dp" />
+        </shape>
+    </item>
+
+    <!-- Panel principal -->
+    <item android:bottom="4dp" android:right="4dp">
+        <shape>
+            <gradient
+                android:startColor="#442D1B0E"
+                android:endColor="#882D1B0E"
+                android:angle="270" />
+            <stroke
+                android:width="3dp"
+                android:color="#FFD700" />
+            <corners android:radius="0dp" />
+        </shape>
+    </item>
+</layer-list>

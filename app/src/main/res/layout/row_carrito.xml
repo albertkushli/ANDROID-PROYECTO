@@ -1,37 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:padding="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    android:background="@drawable/cart_item_background"
+    android:orientation="horizontal"
+    android:padding="12dp"
     android:gravity="center_vertical">
 
-    <!-- Nombre del producto -->
-    <TextView
-        android:id="@+id/tvCartProductName"
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:textColor="#DE0808"
-        android:layout_height="wrap_content"
-        android:text="Nombre"
-        android:textSize="16sp" />
+    <!-- Icono del item -->
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_item_pixel"
+        android:layout_marginEnd="12dp" />
 
-    <!-- Precio -->
-    <TextView
-        android:id="@+id/tvCartProductPrice"
+    <!-- Información del producto -->
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_weight="1"
-        android:textColor="#DE0808"
         android:layout_height="wrap_content"
-        android:text="0.00€"
-        android:gravity="end"
-        android:textSize="16sp" />
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Nombre del producto -->
+        <TextView
+            android:id="@+id/tvCartProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="10sp"
+            android:textColor="#FFD700"
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1" />
+
+        <!-- Precio con icono de moneda -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="4dp">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_coin_pixel"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/tvCartProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="8sp"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Separador vertical -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#44FFD700"
+        android:layout_marginHorizontal="12dp" />
 
     <!-- Botón Eliminar -->
-    <Button
+    <ImageButton
         android:id="@+id/btnRemove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Eliminar" />
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/remove_button_background"
+        android:src="@drawable/ic_trash_pixel"
+        android:scaleType="centerInside"
+        android:padding="8dp"
+        android:contentDescription="Eliminar del carrito" />
+
 </LinearLayout>

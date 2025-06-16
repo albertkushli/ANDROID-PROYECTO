@@ -4,16 +4,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/comprar_item"
     android:layout_height="match_parent">
 
-    <!-- SwipeRefresh + RecyclerView -->
+    <!-- Imagen de fondo de la tienda medieval -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/f6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Overlay oscuro para mejorar legibilidad -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Panel superior con título -->
+    <LinearLayout
+        android:id="@+id/headerPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shop_header_background"
+        android:padding="16dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TIENDA MAGICA"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="16sp"
+            android:textColor="#FFD700"
+            android:gravity="center"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Desliza para actualizar"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="8sp"
+            android:textColor="#AAFFFFFF"
+            android:gravity="center"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+    <!-- SwipeRefresh + RecyclerView con margen para el header -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshProducts"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnCart"
+        app:layout_constraintTop_toBottomOf="@id/headerPanel"
+        app:layout_constraintBottom_toTopOf="@id/bottomPanel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -25,44 +83,81 @@
             android:clipToPadding="false"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <!-- Botón Carrito (centrado abajo, encima del FAB y botón Volver) -->
-
-    <!-- Botón Volver (esquina inferior izquierda) -->
-
-    <ImageButton
-        android:id="@+id/btnCart"
-        android:layout_width="144dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="24dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/cart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- FAB flotante (esquina inferior derecha) -->
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
+    <!-- Panel inferior para botones -->
+    <LinearLayout
+        android:id="@+id/bottomPanel"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="24dp"
-        android:text="Volver"
+        android:orientation="horizontal"
+        android:background="@drawable/bottom_panel_background"
+        android:padding="12dp"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabOpenMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_menu_24"
-        app:backgroundTint="@color/red"
-        app:tint="@android:color/white"
-        android:contentDescription="Abrir menú"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Botón Volver -->
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="VOLVER"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="10sp"
+            android:textColor="#000000"
+            android:background="@drawable/pixel_button_gold"
+            android:paddingHorizontal="16dp" />
+
+        <!-- Espaciador -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- Botón Carrito con estilo -->
+        <LinearLayout
+            android:id="@+id/btnCart"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:background="@drawable/pixel_button_gold"
+            android:paddingHorizontal="16dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_cart_pixel"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CARRITO"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="10sp"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+        <!-- Espaciador -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- FAB de menú -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabOpenMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_menu_24"
+            app:backgroundTint="#FFD700"
+            app:tint="#000000"
+            android:contentDescription="Abrir menú" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

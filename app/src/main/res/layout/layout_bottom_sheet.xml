@@ -1,64 +1,349 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@android:color/white"
-    android:padding="24dp"
-    android:gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Botón Partidas -->
-    <ImageButton
-        android:id="@+id/btnGoPartidas"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/home"
-        android:contentDescription="Partidas"
-        android:layout_marginBottom="12dp" />
+    <!-- Fondo oscuro semi-transparente -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CC000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón Tienda -->
-    <ImageButton
-        android:id="@+id/btnGoStore"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/store"
-        android:contentDescription="Tienda"
-        android:layout_marginBottom="12dp" />
+    <!-- Panel principal del menú -->
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/menu_panel_background"
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Botón Inventario -->
-    <ImageButton
-        android:id="@+id/btnGoInventario"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/bag"
-        android:contentDescription="Inventario"
-        android:layout_marginBottom="12dp" />
+        <!-- Título -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MENU PRINCIPAL"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="13sp"
+            android:textColor="#FFD700"
+            android:gravity="center"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:layout_marginBottom="12dp" />
 
-    <!-- Botón Carrito -->
-    <ImageButton
-        android:id="@+id/btnGoCart"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/cart"
-        android:layout_marginBottom="20dp" />
+        <!-- Grid de botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
 
-    <!-- Botón Cerrar Sesión -->
-    <ImageButton
-        android:id="@+id/btnLogout"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/turn_off"
-        android:contentDescription="Cerrar sesión"
-        android:layout_marginTop="20dp" />
-</LinearLayout>
+            <!-- Fila 1 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <!-- Botón Partidas -->
+                <LinearLayout
+                    android:id="@+id/btnGoPartidas"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/menu_button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="6dp"
+                    android:layout_marginEnd="14dp">
+
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/f11" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PARTIDAS"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="7sp"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <!-- Botón Tienda -->
+                <LinearLayout
+                    android:id="@+id/btnGoStore"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/menu_button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="6dp">
+
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/f3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TIENDA"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="7sp"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Fila 2 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <!-- Botón Inventario -->
+                <LinearLayout
+                    android:id="@+id/btnGoInventario"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/menu_button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="6dp"
+                    android:layout_marginEnd="14dp">
+
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/f4" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MOCHILA"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="7sp"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <!-- Botón Carrito -->
+                <LinearLayout
+                    android:id="@+id/btnGoCart"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/menu_button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="6dp">
+
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/f12" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CARRITO"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="7sp"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Botón Videos (Nuevo) -->
+            <LinearLayout
+                android:id="@+id/btnGoVideos"
+                android:layout_width="204dp"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/menu_button_special_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_video_pixel"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/press_start_2p_family"
+                    android:text="¿DUDAS?"
+                    android:textColor="#FFD700"
+                    android:textSize="9sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Línea divisora -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#44FFD700"
+            android:layout_marginVertical="10dp" />
+
+        <!-- Sección de Denuncias -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Título de sección -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DENUNCIAS"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="9sp"
+                android:textColor="#FF6B6B"
+                android:gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Contenedor de botones de denuncia -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <!-- Botón Reportar -->
+                <LinearLayout
+                    android:id="@+id/btnReportDenuncia"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/denuncia_button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="6dp"
+                    android:layout_marginEnd="10dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_report_pixel" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="REPORTAR"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="6sp"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <!-- Botón Ver Denuncias -->
+                <LinearLayout
+                    android:id="@+id/btnViewDenuncias"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/denuncia_button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="6dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_view_list_pixel" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="VER LISTA"
+                        android:fontFamily="@font/press_start_2p_family"
+                        android:textSize="6sp"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Línea divisora -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#44FFD700"
+            android:layout_marginVertical="10dp" />
+
+        <!-- Botón Cerrar Sesión -->
+        <LinearLayout
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/logout_button_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_power_pixel"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SALIR"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="9sp"
+                android:textColor="#FF6B6B" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@ import dsa.upc.edu.listapp.models.Objeto;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.widget.LinearLayout;
 
 public class SectionActivity extends AppCompatActivity {
 
@@ -58,8 +59,8 @@ public class SectionActivity extends AppCompatActivity {
         }
         setTitle(categoria.getNombre());
 
-        // Botón Carrito
-        ImageButton btnCart = findViewById(R.id.btnCart);
+        // Botón Carrito (es un LinearLayout, no ImageButton)
+        LinearLayout btnCart = findViewById(R.id.btnCart);
         btnCart.setOnClickListener(v -> {
             Intent i = new Intent(SectionActivity.this, CarritoActivity.class);
             i.putExtra("idPartida", idPartida);

@@ -7,7 +7,7 @@ public class Partida implements Serializable {
     private String id_partida;
 
     private String id_usuario;
-
+    private String nombreUsuario;
     private Integer vidas;
 
     private Integer monedas;
@@ -18,9 +18,10 @@ public class Partida implements Serializable {
 
     }
 
-    public Partida(String id_partida, String id_usuario, Integer vidas, Integer monedas, Integer puntuacion) {
+    public Partida(String id_partida, String id_usuario, String nombreUsuario, Integer vidas, Integer monedas, Integer puntuacion) {
         setId_partida(id_partida);
         setId_usuario(id_usuario);
+        setNombreUsuario(nombreUsuario);
         setVidas(vidas);
         setMonedas(monedas);
         setPuntuacion(puntuacion);
@@ -31,6 +32,9 @@ public class Partida implements Serializable {
 
     public String getId_usuario() { return id_usuario; }
     public void setId_usuario(String id_usuario) { this.id_usuario = id_usuario; }
+
+    public String getNombreUsuario(){return nombreUsuario;}
+    public void setNombreUsuario(String nombreUsuario){ this.nombreUsuario = nombreUsuario;}
 
     public Integer getVidas() { return vidas; }
     public void setVidas(Integer vidas) { this.vidas = vidas; }
@@ -43,7 +47,7 @@ public class Partida implements Serializable {
 
     @Override
     public String toString() {
-        return "Partida [id_partida=" + id_partida + ", id_usuario=" + id_usuario + ", vidas=" + vidas +
+        return "Partida [id_partida=" + id_partida + ", id_usuario=" + id_usuario + ", nombre_Usuario =" + nombreUsuario + ", vidas=" + vidas +
                 ", monedas=" + monedas + ", puntuacion=" + puntuacion + "]";
     }
 

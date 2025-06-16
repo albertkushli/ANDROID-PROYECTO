@@ -41,9 +41,8 @@
             android:name=".SectionActivity"
             android:exported="true" />
 
-        <activity
-            android:name=".AddProductActivity"
-            android:exported="true" />
+        <activity android:name=".PerfilActivity" />
+
 
         <activity
             android:name=".PartidasMenuActivity"
@@ -65,5 +64,31 @@
         <activity
             android:name=".PartidaActivity"
             android:exported="true" />
+
+        <activity android:name=".VideoActivity" />
+
+        <activity
+            android:name=".FaqActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ReportDenunciaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DenunciaListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ConsultasActivity"
+            android:label="Consultas"
+            android:parentActivityName=".PartidasMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PartidasMenuActivity" />
+        </activity>
+
+
     </application>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 </manifest>

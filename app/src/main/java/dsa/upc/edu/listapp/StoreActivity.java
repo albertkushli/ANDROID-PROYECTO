@@ -30,29 +30,40 @@ public class StoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // IMPORTANTE: Asegúrate de que este sea el layout correcto
+        // Si el XML que mostraste se llama activity_store.xml, cámbialo aquí
+        setContentView(R.layout.activity_main); // o R.layout.activity_store si ese es el nombre
+
+        // Inicializar API primero
+        api = ApiClient.getClient(StoreActivity.this).create(ApiService.class);
+
+        // Obtener idPartida
         idPartida = getIntent().getStringExtra("idPartida");
-        setContentView(R.layout.activity_main);
+
+        // Configurar FAB
         FloatingActionButton fabOpenMenu = findViewById(R.id.fabOpenMenu);
         fabOpenMenu.setOnClickListener(v -> {
             NavigationBottomSheet.showNavigationMenu(this, idPartida);
-
         });
 
+        // Botón volver
         Button backButton = findViewById(R.id.btn_back);
         backButton.setOnClickListener(view -> finish());
 
-        // Añadir listener al botón RANDOM
+        // Botón Random
         findViewById(R.id.btnRandom).setOnClickListener(view -> {
             Intent intent = new Intent(StoreActivity.this, RandomActivity.class);
-            intent.putExtra("idPartida", idPartida); // si RandomActivity lo necesita
+            intent.putExtra("idPartida", idPartida);
             startActivity(intent);
         });
 
-        // Setup RecyclerView
+        // Configurar RecyclerView
         RecyclerView rv = findViewById(R.id.rvSections);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
+        // Configurar adapter con listener para clicks
         adapter = new SectionAdapter(categoria -> {
+            // Aquí es donde navegamos a SectionActivity
             Intent i = new Intent(StoreActivity.this, SectionActivity.class);
             i.putExtra("categoria", categoria);
             i.putExtra("idPartida", idPartida);
@@ -60,18 +71,17 @@ public class StoreActivity extends AppCompatActivity {
         });
         rv.setAdapter(adapter);
 
-        // Swipe to refresh
+        // Configurar SwipeRefresh
         swipe = findViewById(R.id.swipeRefreshLayout);
         swipe.setOnRefreshListener(this::loadSections);
 
-        // Carga inicial
+        // Cargar secciones
         loadSections();
     }
 
     private void loadSections() {
         swipe.setRefreshing(true);
 
-        api = ApiClient.getClient(StoreActivity.this).create(ApiService.class);
         api.getAllCategorias().enqueue(new Callback<List<CategoriaObjeto>>() {
             @Override
             public void onResponse(Call<List<CategoriaObjeto>> call, Response<List<CategoriaObjeto>> resp) {
@@ -85,7 +95,7 @@ public class StoreActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<CategoriaObjeto>> call, Throwable t) {
                 swipe.setRefreshing(false);
-                Toast.makeText(StoreActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StoreActivity.this, "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

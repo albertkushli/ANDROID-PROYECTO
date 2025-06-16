@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado presionado -->
+    <item android:state_pressed="true">
+        <layer-list>
+            <!-- Sombra -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#801A0000" />
+                    <corners android:radius="0dp" />
+                </shape>
+            </item>
+            <!-- Borde principal -->
+            <item android:bottom="3dp" android:right="3dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#B71C1C" />
+                    <corners android:radius="0dp" />
+                </shape>
+            </item>
+            <!-- Interior -->
+            <item android:bottom="6dp" android:left="3dp" android:right="6dp" android:top="3dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#D32F2F" />
+                    <corners android:radius="0dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Estado normal -->
+    <item>
+        <layer-list>
+            <!-- Sombra oscura -->
+            <item android:left="6dp" android:top="6dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#80000000" />
+                    <corners android:radius="0dp" />
+                </shape>
+            </item>
+            <!-- Borde exterior oscuro -->
+            <item android:bottom="6dp" android:right="6dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#B71C1C" />
+                    <corners android:radius="0dp" />
+                </shape>
+            </item>
+            <!-- Borde interior claro -->
+            <item android:bottom="9dp" android:left="3dp" android:right="9dp" android:top="3dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#EF5350" />
+                    <corners android:radius="0dp" />
+                </shape>
+            </item>
+            <!-- Centro -->
+            <item android:bottom="12dp" android:left="6dp" android:right="12dp" android:top="6dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#E53935" />
+                    <corners android:radius="0dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

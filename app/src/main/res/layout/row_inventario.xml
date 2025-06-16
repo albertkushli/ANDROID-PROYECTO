@@ -1,60 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    android:background="@drawable/inventory_item_background"
+    android:orientation="horizontal"
+    android:padding="10dp"
     android:gravity="center_vertical">
 
-    <!-- Imagen del producto -->
-    <ImageView
-        android:id="@+id/imgProduct"
+    <!-- Marco para la imagen del producto -->
+    <FrameLayout
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="12dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="Imagen del producto" />
+        android:layout_marginEnd="12dp">
 
-    <!-- Contenedor de nombre y precio -->
+        <!-- Imagen del producto -->
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/inventory_item_frame"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Imagen del producto" />
+
+        <!-- Indicador de rareza (opcional) -->
+        <ImageView
+            android:id="@+id/ivRarity"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="-2dp"
+            android:src="@drawable/ic_star_pixel"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!-- Información del item -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <!-- Fila de nombre y precio -->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+        <!-- Nombre del item -->
+        <TextView
+            android:id="@+id/tvItemName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingVertical="4dp">
+            android:text="Nombre"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="10sp"
+            android:textColor="#FFD700"
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginBottom="6dp" />
 
-            <TextView
-                android:id="@+id/tvItemName"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Nombre"
-                android:textColor="#DE0808"
-                android:textSize="16sp"
-                android:ellipsize="end"
-                android:maxLines="1" />
+        <!-- Fila de stats -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Valor/Precio -->
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_coin_pixel"
+                android:layout_marginEnd="4dp" />
 
             <TextView
                 android:id="@+id/tvItemPrice"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0.00€"
-                android:textAlignment="textEnd"
-                android:textColor="#DE0808"
-                android:textSize="16sp" />
+                android:text="0"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="8sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="16dp" />
+
+            <!-- Peso (opcional) -->
+            <ImageView
+                android:id="@+id/ivWeight"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_weight_pixel"
+                android:layout_marginEnd="4dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvItemWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0kg"
+                android:fontFamily="@font/press_start_2p_family"
+                android:textSize="8sp"
+                android:textColor="#AAFFFFFF"
+                android:visibility="gone" />
+
         </LinearLayout>
+
+        <!-- Tipo/Categoría -->
+        <TextView
+            android:id="@+id/tvItemType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONSUMIBLE"
+            android:fontFamily="@font/press_start_2p_family"
+            android:textSize="6sp"
+            android:textColor="#66FFFFFF"
+            android:layout_marginTop="4dp" />
 
     </LinearLayout>
 
+    <!-- Indicador de cantidad (si es stackeable) -->
+    <TextView
+        android:id="@+id/tvQuantity"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/quantity_badge_background"
+        android:text="x1"
+        android:fontFamily="@font/press_start_2p_family"
+        android:textSize="8sp"
+        android:textColor="#FFD700"
+        android:gravity="center"
+        android:visibility="gone" />
+
 </LinearLayout>
-
-

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_background"
+    android:padding="20dp">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ELIGE TU AVATAR"
+        android:fontFamily="@font/press_start_2p_family"
+        android:textSize="12sp"
+        android:textColor="#FFD700"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Grid de avatares -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false">
+
+        <!-- Avatar 1 -->
+        <FrameLayout
+            android:id="@+id/avatar1"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/avatar_selector_item">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/a1"
+                android:padding="8dp"
+                android:scaleType="centerCrop" />
+
+        </FrameLayout>
+
+        <!-- Avatar 2 -->
+        <FrameLayout
+            android:id="@+id/avatar2"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/avatar_selector_item">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/a2"
+                android:padding="8dp"
+                android:scaleType="centerCrop" />
+
+        </FrameLayout>
+
+        <!-- Avatar 3 -->
+        <FrameLayout
+            android:id="@+id/avatar3"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/avatar_selector_item">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/a3"
+                android:padding="8dp"
+                android:scaleType="centerCrop" />
+
+        </FrameLayout>
+
+        <!-- Avatar 4 -->
+        <FrameLayout
+            android:id="@+id/avatar4"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/avatar_selector_item">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/a4"
+                android:padding="8dp"
+                android:scaleType="centerCrop" />
+
+        </FrameLayout>
+
+        <!-- Avatar 5 -->
+        <FrameLayout
+            android:id="@+id/avatar5"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/avatar_selector_item">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/a5"
+                android:padding="8dp"
+                android:scaleType="centerCrop" />
+
+        </FrameLayout>
+
+        <!-- Avatar 6 -->
+        <FrameLayout
+            android:id="@+id/avatar6"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/avatar_selector_item">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/a6"
+                android:padding="8dp"
+                android:scaleType="centerCrop" />
+
+        </FrameLayout>
+
+    </GridLayout>
+
+</LinearLayout>

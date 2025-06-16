@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -23,7 +24,8 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword,etConfirmPassword;
-    private Button btnRegister, btnGoToLogin;
+    private Button btnRegister;
+    private TextView btnGoToLogin;
     private ApiService api;
 
     private EditText etRegisterPassword;

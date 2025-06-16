@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado presionado -->
+    <item android:state_pressed="true">
+        <layer-list>
+            <item>
+                <shape>
+                    <solid android:color="#FFA500" />
+                    <stroke
+                        android:width="2dp"
+                        android:color="#FF8C00" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Estado normal -->
+    <item>
+        <layer-list>
+            <!-- Sombra -->
+            <item android:top="2dp" android:left="2dp">
+                <shape>
+                    <solid android:color="#44000000" />
+                </shape>
+            </item>
+
+            <!-- Botón principal -->
+            <item android:bottom="2dp" android:right="2dp">
+                <shape>
+                    <solid android:color="#FFD700" />
+                    <stroke
+                        android:width="2dp"
+                        android:color="#FFA500" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>
