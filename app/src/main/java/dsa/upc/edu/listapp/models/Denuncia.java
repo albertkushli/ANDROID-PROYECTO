@@ -12,8 +12,6 @@ public class Denuncia implements Serializable {
 
     // Constructor vacío requerido para JSON
     public Denuncia() {
-        // Generar ID único automáticamente
-        this.id_denuncia = UUID.randomUUID().toString();
     }
 
     // Constructor para crear nueva denuncia

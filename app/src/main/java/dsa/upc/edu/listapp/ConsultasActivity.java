@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +30,7 @@ public class ConsultasActivity extends AppCompatActivity {
     private Button btnEnviarConsulta;
     private ImageButton btnBack;
     private ProgressBar progressBar;
-    private ApiService apiService;
+    private ApiService api;
     private static final String CHANNEL_ID = "consultas_channel";
     private static final int NOTIFICATION_ID = 1001;
 
@@ -48,7 +49,7 @@ public class ConsultasActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         // Inicializar API
-        apiService = ApiClient.getClient(this).create(ApiService.class);
+        api = ApiClient.getClient(ConsultasActivity.this).create(ApiService.class);
 
         // Crear canal de notificaciones
         createNotificationChannel();
@@ -83,21 +84,13 @@ public class ConsultasActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         // Crear objeto Consulta
-        Consulta consulta = new Consulta();
-        consulta.setId_consulta(UUID.randomUUID().toString());
-        consulta.setTitulo(titulo);
-        consulta.setMensaje(mensaje);
-        // No establecemos fecha ni id_usuario porque el backend lo hace
-
-        // Obtener token de SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
-        String token = sharedPreferences.getString("auth_token", "");
+        Consulta consulta = new Consulta(titulo, mensaje);
 
         // Hacer llamada a la API
-        Call<Consulta> call = apiService.addConsulta("Bearer " + token, consulta);
-        call.enqueue(new Callback<Consulta>() {
+        api.addConsulta(consulta).enqueue(new Callback<Consulta>() {
             @Override
             public void onResponse(Call<Consulta> call, Response<Consulta> response) {
+                Toast.makeText(ConsultasActivity.this,"Response : "+response.code(), Toast.LENGTH_SHORT).show();
                 btnEnviarConsulta.setEnabled(true);
                 btnEnviarConsulta.setText("ENVIAR");
                 progressBar.setVisibility(View.GONE);
@@ -125,6 +118,7 @@ public class ConsultasActivity extends AppCompatActivity {
                 btnEnviarConsulta.setEnabled(true);
                 btnEnviarConsulta.setText("ENVIAR");
                 progressBar.setVisibility(View.GONE);
+                Log.e("CONSULTA_ERROR", "Error de conexión", t); // Esto imprimirá stacktrace completo
                 Toast.makeText(ConsultasActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

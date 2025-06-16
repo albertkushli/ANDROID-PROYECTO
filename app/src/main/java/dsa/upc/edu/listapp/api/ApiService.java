@@ -127,5 +127,5 @@ public interface ApiService {
     @GET("denuncias/usuario")
     Call<List<Denuncia>> getMisDenuncias();
     @POST("consultas")
-    Call<Consulta> addConsulta(@Header("Authorization") String token, @Body Consulta consulta);
+    Call<Consulta> addConsulta(@Body Consulta consulta);
 }

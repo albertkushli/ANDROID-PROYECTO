@@ -1,12 +1,12 @@
 package dsa.upc.edu.listapp.models;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
-public class Consulta {
+public class Consulta implements Serializable {
 
     private String id_consulta;
 
-    private LocalDateTime fecha;
+    private String fecha;
 
     private String titulo;
 
@@ -18,7 +18,12 @@ public class Consulta {
 
     }
 
-    public Consulta(String id_consulta, LocalDateTime fecha, String titulo, String mensaje, String id_usuario){
+    public Consulta(String titulo, String mensaje) {
+        setTitulo(titulo);
+        setMensaje(mensaje);
+    }
+
+    public Consulta(String id_consulta, String fecha, String titulo, String mensaje, String id_usuario){
         setId_consulta(id_consulta);
         setFecha(fecha);
         setTitulo(titulo);
@@ -30,8 +35,8 @@ public class Consulta {
     public String getId_consulta() {return id_consulta;}
     public void setId_consulta(String id_consulta) {this.id_consulta = id_consulta;}
 
-    public LocalDateTime getFecha() {return fecha;}
-    public void setFecha(LocalDateTime fecha) {this.fecha = fecha;}
+    public String getFecha() {return fecha;}
+    public void setFecha(String fecha) {this.fecha = fecha;}
 
     public String getTitulo() {return titulo;}
     public void setTitulo(String titulo) {this.titulo = titulo;}
