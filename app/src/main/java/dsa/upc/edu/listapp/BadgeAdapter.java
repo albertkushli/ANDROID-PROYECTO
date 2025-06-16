@@ -54,27 +54,19 @@ public class BadgeAdapter extends RecyclerView.Adapter<BadgeAdapter.BadgeViewHol
         public void bind(Insignia insignia) {
             tvBadgeName.setText(insignia.getNombre());
 
-            // Cargar imagen de la insignia
             String avatarPath = insignia.getAvatar();
 
             if (avatarPath != null && !avatarPath.isEmpty()) {
-                // La ruta viene como "img/insigniaEspada.png"
-                // Extraemos solo el nombre del archivo sin extensión
-                String fileName = avatarPath;
-                if (avatarPath.contains("/")) {
-                    fileName = avatarPath.substring(avatarPath.lastIndexOf("/") + 1);
-                }
+                // Extraemos el nombre del archivo sin ruta ni extensión
+                String fileName = avatarPath.substring(avatarPath.lastIndexOf("/") + 1);
                 if (fileName.contains(".")) {
                     fileName = fileName.substring(0, fileName.lastIndexOf("."));
                 }
 
-                // Convertir a nombre de recurso drawable
-                // insigniaEspada -> insignia_espada
-                String resourceName = fileName
-                        .replaceAll("([a-z])([A-Z])", "$1_$2") // CamelCase to snake_case
-                        .toLowerCase();
+                // Convertimos el nombre a minúsculas, tal como se guarda en drawable
+                String resourceName = fileName.toLowerCase();
 
-                // Buscar el recurso en drawable
+                // Buscamos el recurso drawable
                 int resourceId = itemView.getContext().getResources().getIdentifier(
                         resourceName,
                         "drawable",
@@ -84,23 +76,10 @@ public class BadgeAdapter extends RecyclerView.Adapter<BadgeAdapter.BadgeViewHol
                 if (resourceId != 0) {
                     ivBadge.setImageResource(resourceId);
                 } else {
-                    // Si no encuentra el recurso, intenta con el nombre original
-                    resourceId = itemView.getContext().getResources().getIdentifier(
-                            fileName.toLowerCase(),
-                            "drawable",
-                            itemView.getContext().getPackageName()
-                    );
-
-                    if (resourceId != 0) {
-                        ivBadge.setImageResource(resourceId);
-                    } else {
-                        // Imagen por defecto si no se encuentra
-                        ivBadge.setImageResource(android.R.drawable.star_on);
-                    }
+                    ivBadge.setImageResource(android.R.drawable.star_on); // Imagen por defecto
                 }
             } else {
-                // Sin imagen especificada
-                ivBadge.setImageResource(android.R.drawable.star_on);
+                ivBadge.setImageResource(android.R.drawable.star_on); // Imagen por defecto si no hay avatar
             }
         }
     }
